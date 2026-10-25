@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems">
+  <meta name="description" content="GuardChat is a 10,000-sample benchmark for studying multi-turn, memory-exploiting jailbreak attacks and defenses in text-to-image systems.">
+  <meta name="keywords" content="GuardChat, text-to-image safety, jailbreak attacks, multi-turn dialogue, prompt rewriting, NSFW detection, benchmark dataset, generative AI safety">
+  <meta name="author" content="Ngoc-Dai Tran, Thanh-Tuong Huynh, Trung-Nghia Le">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GuardChat Project Page">
+  <meta property="og:title" content="GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems">
+  <meta property="og:description" content="A large-scale benchmark for conversational jailbreak attacks and context-aware defenses in text-to-image systems.">
+  <meta property="og:url" content="https://anonymous.4open.science/w/GuardChat/">
+  <meta property="og:image" content="static/images/pipeline.png">
+  <meta property="og:image:alt" content="GuardChat research preview">
+  <meta property="article:author" content="Ngoc-Dai Tran">
+  <meta property="article:section" content="Research">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems">
+  <meta name="twitter:description" content="A 10,000-sample benchmark for multi-turn jailbreak attacks and T2I safety defenses.">
+  <meta name="twitter:image" content="static/images/pipeline.png">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems">
+  <meta name="citation_author" content="Tran, Ngoc-Dai">
+  <meta name="citation_author" content="Huynh, Thanh-Tuong">
+  <meta name="citation_author" content="Le, Trung-Nghia">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <title>GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems",
+    "description": "GuardChat is a 10,000-sample benchmark for studying memory-exploiting multi-turn jailbreak attacks and context-aware safety defenses in text-to-image systems.",
+    "author": [
+      {"@type": "Person", "name": "Ngoc-Dai Tran"},
+      {"@type": "Person", "name": "Thanh-Tuong Huynh"},
+      {"@type": "Person", "name": "Trung-Nghia Le"}
+    ],
+    "datePublished": "2026",
+    "url": "https://anonymous.4open.science/w/GuardChat/",
+    "encoding": {"@type": "MediaObject", "contentUrl": "static/pdfs/paper.pdf", "encodingFormat": "application/pdf"},
+    "keywords": ["text-to-image safety", "multi-turn jailbreak", "prompt rewriting", "unsafe text recognition", "benchmark dataset"],
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+<section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems</h1>
+            <p class="subtitle is-5">GuardChat introduces a 10,000-sample benchmark for evaluating how text-to-image systems fail under multi-turn,
+            memory-exploiting jailbreak attacks and how well current defenses recognize or rewrite unsafe intent.</p>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <span>Ngoc-Dai Tran</span><sup>*</sup>,</span>
+                <span class="author-block">
+                  <span>Thanh-Tuong Huynh</span><sup>*</sup>, and</span>
+                  <span class="author-block">
+                    <span>Trung-Nghia Le</span><sup>†</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">University of Science, Ho Chi Minh City, Vietnam<br>Vietnam National University, Ho Chi Minh City, Vietnam</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Equal contributions. <sup>†</sup>Corresponding author.</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+            <span class="link-block">
+              <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://anonymous.4open.science/r/GuardChat-Evaluation" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code Evaluation</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://huggingface.co/datasets/multimedia-synergy-lab/GuardChat" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <span>Dataset</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-quote-right"></i></span>
+                <span>BibTeX</span>
+              </a>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" aria-label="Dataset at a glance">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Dataset at a Glance</h2>
+        <div class="columns is-multiline has-text-centered">
+          <div class="column is-one-quarter">
+            <div class="title is-3">10,000</div>
+            <div class="subtitle is-6">Prompt-conversation pairs</div>
+          </div>
+          <div class="column is-one-quarter">
+            <div class="title is-3">6-10</div>
+            <div class="subtitle is-6">Turns per attack dialogue</div>
+          </div>
+          <div class="column is-one-quarter">
+            <div class="title is-3">6</div>
+            <div class="subtitle is-6">Unified harm categories</div>
+          </div>
+          <div class="column is-one-quarter">
+            <div class="title is-3">56.71%</div>
+            <div class="subtitle is-6">Jailbreak success on 922 verified samples</div>
+          </div>
+        </div>
+    <nav class="page-navigation" aria-label="Page sections">
+      <a href="#abstract">Abstract</a><a href="#dataset">Dataset</a><a href="#pipeline">Pipeline</a>
+      <a href="#evaluation">Evaluation</a><a href="#results">Results</a><a href="#manuscript">Paper</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Multi-turn conversational jailbreak attacks that exploit model memory pose a critical yet underexplored
+                threat to text-to-image systems. By distributing harmful intent across multiple turns, adversaries can
+                bypass single-turn safety filters and elicit NSFW content spanning sexual, illegal, shocking, violence,
+                self-harm, and harassment categories.
+              </p>
+              <p>
+                GuardChat contains 10,000 prompt-conversation pairs. Each sample couples an enhanced toxic prompt with
+                a realistic 6-10 turn dialogue that incrementally induces unsafe generation. The dataset is constructed
+                through a scalable pipeline combining generative oracle verification and model-based synthesis, and it
+                achieves a 56.71% jailbreak success rate on 922 oracle-verified samples.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+<section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">What GuardChat Adds</h2>
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="content">
+              <h3 class="title is-5">Multi-Turn T2I Jailbreak Dataset</h3>
+              <p>GuardChat is designed for memory-exploiting jailbreaks in T2I systems, rather than isolated single-turn prompts.</p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="content">
+              <h3 class="title is-5">Scalable Construction Pipeline</h3>
+              <p>A two-stage pipeline combines Gemini-2.5-Flash-Image oracle verification, LoRA-based prompt enhancement, and Gemma-4-31B conversation synthesis.</p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="content">
+              <h3 class="title is-5">Two Safety Tasks</h3>
+              <p>The benchmark covers multi-label unsafe text recognition and NSFW concept removal via prompt rewriting.</p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="content">
+              <h3 class="title is-5">Empirical Stress Test</h3>
+              <p>Existing defenses degrade substantially in conversational settings, and the strongest rewriting system reaches only 67.56% safe generation rate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="dataset">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Statistics and Categories</h2>
+        <div class="columns is-multiline distribution-figures">
+          <div class="column is-one-third"><figure class="paper-figure">
+            <a href="static/images/class_distribution_full.png" target="_blank" rel="noopener noreferrer" aria-label="Open full split distribution at full size">
+              <img src="static/images/class_distribution_full.png" alt="Harm category distribution for the full split of GuardChat" loading="lazy" decoding="async">
+            </a><figcaption>Full dataset · 10,000 samples</figcaption>
+          </figure></div>
+          <div class="column is-one-third"><figure class="paper-figure">
+            <a href="static/images/class_distribution_train.png" target="_blank" rel="noopener noreferrer" aria-label="Open train split distribution at full size">
+              <img src="static/images/class_distribution_train.png" alt="Harm category distribution for the train split of GuardChat" loading="lazy" decoding="async">
+            </a><figcaption>Training split · 9,000 samples</figcaption>
+          </figure></div>
+          <div class="column is-one-third"><figure class="paper-figure">
+            <a href="static/images/class_distribution_test.png" target="_blank" rel="noopener noreferrer" aria-label="Open test split distribution at full size">
+              <img src="static/images/class_distribution_test.png" alt="Harm category distribution for the test split of GuardChat" loading="lazy" decoding="async">
+            </a><figcaption>Test split · 1,000 samples</figcaption>
+          </figure></div>
+        </div>
+        <p class="content">The test split shifts toward harassment (25.90% versus 13.09% in training).
+          JailbreakDiffBench accounts for 36.50% of test samples but 2.37% of training samples;
+          OVERT contributes only to training.</p>
+
+        <div class="content">
+          <p>
+            GuardChat aggregates prompts from I2P, Nibbler, OVERT, and JailbreakDiffBench, then normalizes their labels
+            into six categories for multi-label evaluation.
+          </p>
+        </div>
+
+        <div class="tags mb-5">
+          <span class="tag is-light is-medium">Sexual</span>
+          <span class="tag is-light is-medium">Violence</span>
+          <span class="tag is-light is-medium">Harassment</span>
+          <span class="tag is-light is-medium">Shocking</span>
+          <span class="tag is-light is-medium">Illegal</span>
+          <span class="tag is-light is-medium">Self-harm</span>
+        </div>
+
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+              <tr>
+                <th>Statistic</th>
+                <th>Full</th>
+                <th>Train</th>
+                <th>Test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Samples</td><td>10,000</td><td>9,000</td><td>1,000</td></tr>
+              <tr><td>Sexual</td><td>2,904 (29.04%)</td><td>2,575 (28.61%)</td><td>329 (32.90%)</td></tr>
+              <tr><td>Violence</td><td>1,756 (17.56%)</td><td>1,596 (17.73%)</td><td>160 (16.00%)</td></tr>
+              <tr><td>Harassment</td><td>1,437 (14.37%)</td><td>1,178 (13.09%)</td><td>259 (25.90%)</td></tr>
+              <tr><td>Shocking</td><td>1,392 (13.92%)</td><td>1,295 (14.39%)</td><td>97 (9.70%)</td></tr>
+              <tr><td>Illegal</td><td>1,319 (13.19%)</td><td>1,233 (13.70%)</td><td>86 (8.60%)</td></tr>
+              <tr><td>Self-harm</td><td>1,192 (11.92%)</td><td>1,123 (12.48%)</td><td>69 (6.90%)</td></tr>
+              <tr><td>I2P source</td><td>6,339 (63.39%)</td><td>5,955 (66.17%)</td><td>384 (38.40%)</td></tr>
+              <tr><td>Nibbler source</td><td>2,307 (23.07%)</td><td>2,056 (22.84%)</td><td>251 (25.10%)</td></tr>
+              <tr><td>OVERT source</td><td>776 (7.76%)</td><td>776 (8.62%)</td><td>0 (0.00%)</td></tr>
+              <tr><td>JailbreakDiffBench source</td><td>578 (5.78%)</td><td>213 (2.37%)</td><td>365 (36.50%)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+<section class="section hero is-light" id="pipeline">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Construction Framework</h2>
+        <figure class="paper-figure">
+          <a href="static/images/pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="Open construction pipeline at full size">
+            <img src="static/images/pipeline.png" alt="GuardChat construction: source prompts, enhancement and oracle verification, LoRA scaling, multi-turn synthesis, filtering, and two-task evaluation." loading="lazy" decoding="async">
+          </a>
+          <figcaption>Two-phase construction pipeline from the paper. Open the figure to view it at full size.</figcaption>
+        </figure>
+
+        <div class="columns is-multiline">
+          <div class="column is-half content">
+            <h3 class="title is-5">1. Data Collection</h3>
+            <p>Raw toxic prompts are collected from four established T2I safety datasets, deduplicated, filtered, and normalized.</p>
+          </div>
+          <div class="column is-half content">
+            <h3 class="title is-5">2. Prompt Enhancement</h3>
+            <p>Gemini-2.5-Flash and a LoRA fine-tuned Qwen2.5-7B-Instruct model rewrite raw prompts into stronger natural-language adversarial prompts.</p>
+          </div>
+          <div class="column is-half content">
+            <h3 class="title is-5">3. Conversation Synthesis</h3>
+            <p>Gemma-4-31B generates 6-10 turn conversations that begin benignly and gradually escalate toward the target unsafe concept.</p>
+          </div>
+          <div class="column is-half content">
+            <h3 class="title is-5">4. Verification and QA</h3>
+            <p>Gemini-2.5-Flash-Image checks 1,000 seed candidates; 922 pass oracle verification. Automated filtering checks label consistency, escalation coherence, and absence of PII.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<section class="section hero is-light" id="evaluation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Evaluation Protocol</h2>
+    <div class="columns is-multiline">
+      <div class="column is-half content">
+        <h3 class="title is-5">1. Recognize unsafe intent</h3>
+        <p>Input: an isolated enhanced prompt or the concatenated conversation history.
+          Output: a binary safety decision and a six-category multi-label prediction.</p>
+        <p><strong>ASR ↓</strong> is 1 − recall: the fraction of unsafe inputs missed by the recognizer.
+          <strong>Macro-F1 ↑</strong> averages F1 across all six categories so each contributes equally.</p>
+      </div>
+      <div class="column is-half content">
+        <h3 class="title is-5">2. Rewrite unsafe prompts</h3>
+        <p>Input: the enhanced toxic prompt. Output: a sanitized prompt that preserves benign visual details.
+          Rewritten prompts are evaluated with FLUX.1, Gemini 2.5 Flash Image, and DALL-E 3.</p>
+        <p><strong>SGR ↑</strong> measures the percentage producing safe images.
+          <strong>CLIP similarity ↑</strong> is the cosine similarity of the original and rewritten prompt text embeddings.</p>
+      </div>
+    </div>
+    <h3 class="title is-4">Does conversational delivery matter?</h3>
+    <p class="content">Appendix evaluation against Gemini-2.5-Flash-Image on the same 922 oracle-verified samples.</p>
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped">
+        <caption>Jailbreak success rate (JSR) by attack delivery protocol; higher values indicate more successful attacks.</caption>
+        <thead><tr><th scope="col">Delivery protocol</th><th scope="col">Samples</th><th scope="col">JSR (%)</th></tr></thead>
+        <tbody><tr><td>Sequential messages in a stateful session</td><td>922</td><td>56.71</td></tr>
+          <tr><td>Entire conversation in one concatenated prompt</td><td>922</td><td>54.34</td></tr></tbody>
+      </table>
+    </div>
+    <p class="content">Sequential delivery increases JSR by 2.37 percentage points. The similar rates show that
+      the conversation structure remains effective even without stateful delivery.</p>
+    <details class="paper-details">
+      <summary>Dataset split and verification counts</summary>
+      <p>The paper's dataset statistics report 10,000 pairs, split into 9,000 training and 1,000 test samples.
+        Its quality-assurance procedure reports that 922 of 1,000 seed candidates pass oracle verification;
+        the delivery-protocol experiment above uses those 922 samples. These are distinct reported counts.</p>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Task 1: Multi-Label Unsafe Text Recognition</h2>
+        <div class="content">
+          <p>
+            Recognition models must infer unsafe intent from either isolated prompts or concatenated multi-turn dialogue.
+            Lower attack success rate (ASR) is better; higher Macro-F1 is better.
+          </p>
+        </div>
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Single-Turn ASR (%) ↓</th>
+                <th>Multi-Turn ASR (%) ↓</th>
+                <th>Macro-F1 ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>BiLSTM</td><td>14.22</td><td>80.45</td><td>0.312</td></tr>
+              <tr><td>BERT</td><td>9.85</td><td>72.30</td><td>0.422</td></tr>
+              <tr><td>SafeGuider</td><td>5.50</td><td>58.21</td><td>0.487</td></tr>
+              <tr><td>Qwen2.5-7B (Zero-shot)</td><td>7.90</td><td>60.33</td><td>0.542</td></tr>
+              <tr><td>Llama-Guard-3-8B (Zero-shot)</td><td>6.50</td><td><strong>52.15</strong></td><td><strong>0.579</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content mt-5">
+          <strong>Main finding:</strong> Models that perform well on static prompts degrade sharply on multi-turn dialogue.
+          SafeGuider rises from 5.50% single-turn ASR to 58.21% multi-turn ASR, showing that distributed intent can evade existing defenses.
+        </div>
+      </div>
+    </section>
+
+<section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Task 2: NSFW Concept Removal via Prompt Rewriting</h2>
+        <div class="content">
+          <p>
+            Rewriting systems sanitize unsafe prompts before image generation. Evaluation reports Safe Generation Rate (SGR)
+            across T2I targets and CLIP cosine similarity for semantic preservation.
+          </p>
+        </div>
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>FLUX.1 SGR (%) ↑</th>
+                <th>Gemini SGR (%) ↑</th>
+                <th>DALL-E 3 SGR (%) ↑</th>
+                <th>CLIP Sim. ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SafeGuider</td><td>24.50</td><td>38.10</td><td>45.20</td><td>0.351</td></tr>
+              <tr><td>Llama-3.1-8B</td><td>31.20</td><td>46.50</td><td>52.10</td><td>0.418</td></tr>
+              <tr><td>Gemini 2.5 Flash</td><td><strong>44.80</strong></td><td><strong>59.30</strong></td><td><strong>67.56</strong></td><td><strong>0.515</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content mt-5">
+          <strong>Main finding:</strong> Gemini 2.5 Flash performs best among tested rewriting models, but even the strongest system
+          reaches only 67.56% SGR on DALL-E 3 and all systems show low semantic preservation.
+        </div>
+      </div>
+    </section>
+
+<section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Comparison with Existing T2I Safety Datasets</h2>
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped">
+            <thead>
+              <tr>
+                <th>Dataset</th>
+                <th>Scale</th>
+                <th>Multi-Turn</th>
+                <th>Labels</th>
+                <th>Tasks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>I2P</td><td>4,703</td><td>No</td><td>1</td><td>1</td></tr>
+              <tr><td>Nibbler</td><td>6,297</td><td>No</td><td>3</td><td>1</td></tr>
+              <tr><td>JailbreakDiffBench</td><td>2,000+</td><td>No</td><td>11</td><td>1</td></tr>
+              <tr><td>T2I-RiskyPrompt</td><td>6,432</td><td>No</td><td>6</td><td>1</td></tr>
+              <tr><td><strong>GuardChat</strong></td><td><strong>10,000</strong></td><td><strong>Yes</strong></td><td><strong>6</strong></td><td><strong>2</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+<section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-multiline">
+          <div class="column is-half content">
+            <h2 class="title is-4">Known Scope Boundaries</h2>
+            <div class="content">
+              <p>GuardChat relies on LLMs for synthesis and verification, which may introduce stylistic homogeneity and oracle-specific bias.</p>
+              <p>The dataset is English-only, and results may shift as proprietary T2I safety systems are updated.</p>
+              <p>CLIP similarity is useful but may not fully reflect human-perceived semantic fidelity after prompt rewriting.</p>
+            </div>
+          </div>
+          <div class="column is-half content">
+            <h2 class="title is-4">Impact and Safeguards</h2>
+            <div class="content">
+              <p>GuardChat is intended to help researchers build defenses that track harmful intent across conversations.</p>
+              <p>The dataset is fully synthesized, contains no real user data or PII, and is released under a strict research-only license to reduce dual-use risk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="manuscript">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Manuscript</h2>
+        <p class="content"><a href="static/pdfs/paper.pdf" target="_blank" rel="noopener noreferrer">Open paper PDF</a>
+          · <a href="static/pdfs/paper.pdf" download="GuardChat.pdf">Download PDF</a></p>
+        <iframe width="100%" height="550" src="static/pdfs/paper.pdf" title="GuardChat paper PDF"></iframe>
+      </div>
+    </section>
+
+<section class="section hero is-light" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@misc{tran2026guardchat,
+  title     = {GuardChat: Benchmarking Multi-Turn Jailbreak Attacks in T2I Systems},
+  author    = {Tran, Ngoc-Dai and Huynh, Thanh-Tuong and Le, Trung-Nghia},
+  year      = {2026},
+  url       = {https://github.com/ngocdai101004/GuardChat}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

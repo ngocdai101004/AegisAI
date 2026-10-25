@@ -768,7 +768,6 @@ section[id] { scroll-margin-top: 1rem; }
 .table th[scope="row"] { font-weight: 500; }
 .table thead th { vertical-align: bottom; }
 .table caption { caption-side: bottom; text-align: left; }
-.paper-viewer { display: block; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
 .content ol li + li { margin-top: 0.75rem; }
 @media screen and (max-width: 480px) {
   .bibtex-header { gap: 1rem; align-items: flex-start; }

@@ -765,6 +765,11 @@ a:focus {
 section[id] { scroll-margin-top: 1rem; }
 
 /* Keep the existing theme while accommodating the AegisAI paper content. */
+.publication-intro {
+  background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 55%, #f0f9ff 100%);
+  border-bottom: 1px solid #dbeafe;
+}
+
 .publication-title + .subtitle { line-height: 1.6; }
 .publication-authors sup { font-size: 0.65em; }
 .table th[scope="row"] { font-weight: 500; }

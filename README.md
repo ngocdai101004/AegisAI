@@ -20,6 +20,6 @@ Open http://localhost:8000. No build step is required.
 - `static/css/index.css`: existing page theme with small responsive and accessibility adjustments.
 - `static/js/index.js`: citation copying and scroll-to-top behavior.
 
-The supplied PDF is the reference version. Its title and abstract match `AegisAI_revised.tex`; `main.tex` has an earlier title. GuardChat is referenced only as the existing benchmark used in AegisAI’s preliminary evaluation. No public AegisAI code/demo URL, DOI, or proceedings metadata was supplied, so the page does not invent those links or bibliographic fields.
+The supplied PDF is the reference version. Its title and abstract match `AegisAI_revised.tex`; `main.tex` has an earlier title. GuardChat is referenced only as the existing benchmark used in AegisAI’s preliminary evaluation. The BibTeX uses the author-supplied SOICT 2026 conference citation and oral-presentation note. No public AegisAI code/demo URL or DOI was supplied, so those links and fields are omitted.
 
 The template attribution is preserved in the page footer; see `LICENSE` for the source-code license.

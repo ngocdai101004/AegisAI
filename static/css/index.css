@@ -414,9 +414,6 @@ code {
   background: #10b981;
 }
 
-.copy-bibtex-btn.copied .copy-text::after {
-  content: "ied!";
-}
 
 /* Scroll to Top Button */
 .scroll-to-top {
@@ -764,3 +761,21 @@ a:focus {
 .paper-details summary { cursor: pointer; font-weight: 600; }
 .paper-details p { margin-top: 0.75rem; }
 section[id] { scroll-margin-top: 1rem; }
+
+/* Keep the existing theme while accommodating the AegisAI paper content. */
+.publication-title + .subtitle { line-height: 1.6; }
+.publication-authors sup { font-size: 0.65em; }
+.table th[scope="row"] { font-weight: 500; }
+.table thead th { vertical-align: bottom; }
+.table caption { caption-side: bottom; text-align: left; }
+.paper-viewer { display: block; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+.content ol li + li { margin-top: 0.75rem; }
+@media screen and (max-width: 480px) {
+  .bibtex-header { gap: 1rem; align-items: flex-start; }
+  .copy-bibtex-btn { flex-shrink: 0; }
+  .scroll-to-top { bottom: 1rem; right: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
